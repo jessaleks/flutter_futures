@@ -1,10 +1,9 @@
 import "dart:async";
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart';
 import 'package:async/async.dart';
 // import 'package:geolocator/geolocator.dart';
-// import 'package:http/http.dart';
-// import 'package:http/http.dart' as http;
+import 'package:http/http.dart';
+import 'package:http/http.dart' as http;
 
 void main() {
   runApp(const MyApp());
@@ -55,5 +54,13 @@ class _FuturePageState extends State<FuturePage> {
         ]),
       ),
     );
+  }
+
+  // The function that gets the data
+  Future<Response> getData() async {
+    final Uri url =
+        Uri.https("www.googleapis.com", "/books/v1/volumes/junbDwAAQBAJ");
+
+    return http.get(url);
   }
 }
